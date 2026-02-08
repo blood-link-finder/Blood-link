@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Donor Finder - Emergency Portal</title>
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app-container">
+        
+        <div id="auth-screen">
+            <div class="brand-icon" style="width: 60px; height: 60px; font-size: 24px; background: white; color: var(--primary); margin-bottom: 20px;">
+                <i class="fa-solid fa-droplet"></i>
+            </div>
+            <h2 style="margin-bottom: 5px;">Blood Donor Finder</h2>
+            <p style="margin-bottom: 30px; opacity: 0.9;">Emergency Contact Portal</p>
+            
+            <div class="auth-card">
+                <h3 style="margin-bottom: 15px;">Login</h3>
+                <form id="login-form">
+                    <input type="email" id="email" placeholder="Email Address" required>
+                    <input type="password" id="password" placeholder="Password" required>
+                    <button type="submit" class="btn btn-primary">Secure Login</button>
+                    <p id="login-error" style="color: red; font-size: 13px; margin-top: 10px; text-align: center;"></p>
+                </form>
+            </div>
+        </div>
+
+        <div id="main-app" class="hidden">
+            
+            <header>
+                <div class="brand">
+                    <div class="brand-icon"><i class="fa-solid fa-droplet"></i></div>
+                    <div>
+                        <h4 style="font-size: 16px;">Donor Finder</h4>
+                        <span id="user-role-display" class="role-badge role-admin">Loading...</span>
+                    </div>
+                </div>
+                <button onclick="window.logout()" class="btn-sm btn-outline"><i class="fa-solid fa-right-from-bracket"></i></button>
+            </header>
+
+            <div style="padding-bottom: 70px;"> 
+                
+                <div id="home-tab" class="p-4">
+                    <div style="background: white; padding: 15px; border-radius: 12px; margin-bottom: 20px; border: 1px solid #eee;">
+                        <input type="text" id="search-input" placeholder="Search by city (e.g., Kochi)...">
+                        
+                        <div class="chips" id="blood-filter">
+                            <div class="chip active" onclick="window.filterDonors('All')">All</div>
+                            <div class="chip" onclick="window.filterDonors('A+')">A+</div>
+                            <div class="chip" onclick="window.filterDonors('B+')">B+</div>
+                            <div class="chip" onclick="window.filterDonors('O+')">O+</div>
+                            <div class="chip" onclick="window.filterDonors('AB+')">AB+</div>
+                            <div class="chip" onclick="window.filterDonors('A-')">A-</div>
+                            <div class="chip" onclick="window.filterDonors('B-')">B-</div>
+                            <div class="chip" onclick="window.filterDonors('O-')">O-</div>
+                            <div class="chip" onclick="window.filterDonors('AB-')">AB-</div>
+                        </div>
+                    </div>
+
+                    <h3 style="margin-bottom: 15px; font-size: 16px;">Available Donors</h3>
+                    <div id="donor-list">
+                        <div style="text-align: center; color: #888; margin-top: 30px;">Loading data...</div>
+                    </div>
+                </div>
+
+                <div id="add-tab" class="p-4 hidden">
+                    <div class="auth-card" style="box-shadow: none; border: 1px solid #eee;">
+                        <h3>Register New Donor</h3>
+                        <p style="color: #666; font-size: 13px; margin-bottom: 15px;">Verify details before adding.</p>
+                        
+                        <form id="add-donor-form">
+                            <input type="text" id="d-name" placeholder="Donor Name *" required>
+                            
+                            <select id="d-group" required>
+                                <option value="" disabled selected>Blood Group *</option>
+                                <option value="A+">A+</option>
+                                <option value="A-">A-</option>
+                                <option value="B+">B+</option>
+                                <option value="B-">B-</option>
+                                <option value="O+">O+</option>
+                                <option value="O-">O-</option>
+                                <option value="AB+">AB+</option>
+                                <option value="AB-">AB-</option>
+                            </select>
+
+                            <input type="text" id="d-city" placeholder="City *" required>
+                            <input type="tel" id="d-phone" placeholder="Phone Number *" required>
+                            <input type="date" id="d-last-donated" title="Last Donated Date">
+                            
+                            <button type="submit" class="btn btn-primary">Add to Database</button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+
+            <nav class="bottom-nav">
+                <div class="nav-item active" onclick="window.switchTab('home')">
+                    <i class="fa-solid fa-search"></i>
+                    <span>Find</span>
+                </div>
+                <div class="nav-item hidden" id="nav-add-btn" onclick="window.switchTab('add')">
+                    <i class="fa-solid fa-plus-circle"></i>
+                    <span>Add Donor</span>
+                </div>
+            </nav>
+
+        </div>
+    </div>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>

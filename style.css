@@ -1,0 +1,93 @@
+:root {
+    --primary: #EF4444; /* Blood Red */
+    --primary-dark: #B91C1C;
+    --bg-color: #F3F4F6;
+    --card-bg: #FFFFFF;
+    --text-main: #1F2937;
+    --text-sub: #6B7280;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
+
+body { background: var(--bg-color); color: var(--text-main); }
+
+/* --- Layout --- */
+.app-container { max-width: 480px; margin: 0 auto; background: #fff; min-height: 100vh; position: relative; box-shadow: 0 0 20px rgba(0,0,0,0.1); }
+.p-4 { padding: 16px; }
+.hidden { display: none !important; }
+
+/* --- Authentication UI --- */
+#auth-screen {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: linear-gradient(135deg, #EF4444 0%, #B91C1C 100%);
+    color: white;
+}
+.auth-card {
+    background: white;
+    padding: 30px;
+    border-radius: 16px;
+    width: 100%;
+    color: var(--text-main);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* --- Header --- */
+header { background: white; padding: 16px; position: sticky; top: 0; z-index: 10; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
+.brand { display: flex; align-items: center; gap: 10px; }
+.brand-icon { width: 35px; height: 35px; background: var(--primary); border-radius: 50%; color: white; display: grid; place-items: center; }
+
+/* --- Forms & Inputs --- */
+input, select, textarea {
+    width: 100%; padding: 12px; margin-bottom: 12px;
+    border: 1px solid #ddd; border-radius: 8px; font-size: 14px;
+}
+input:focus { border-color: var(--primary); outline: none; }
+
+.btn {
+    width: 100%; padding: 14px; border: none; border-radius: 10px;
+    font-weight: 600; font-size: 16px; cursor: pointer; transition: 0.2s;
+}
+.btn-primary { background: var(--primary); color: white; }
+.btn-primary:hover { background: var(--primary-dark); }
+.btn-outline { background: transparent; border: 1px solid #ddd; color: var(--text-main); }
+.btn-sm { padding: 8px 12px; font-size: 13px; width: auto; }
+.btn-danger { background: #DC2626; color: white; }
+
+/* --- Donor List --- */
+.donor-card {
+    background: white; padding: 16px; border-radius: 12px; margin-bottom: 12px;
+    border: 1px solid #eee; box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+}
+.donor-header { display: flex; gap: 12px; }
+.blood-group {
+    width: 50px; height: 50px; background: #FEF2F2; color: var(--primary);
+    border-radius: 10px; display: grid; place-items: center; font-weight: bold; font-size: 18px; border: 1px solid #FECACA;
+}
+.action-row { display: flex; gap: 8px; margin-top: 12px; }
+.contact-btn { flex: 1; display: flex; align-items: center; justify-content: center; gap: 6px; height: 40px; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: 500;}
+.call { background: #DCFCE7; color: #166534; }
+.chat { background: #25D366; color: white; }
+
+/* --- Chips & Filters --- */
+.chips { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 8px; margin-bottom: 10px; }
+.chip { padding: 6px 14px; background: white; border: 1px solid #ddd; border-radius: 20px; font-size: 13px; white-space: nowrap; cursor: pointer; }
+.chip.active { background: var(--primary); color: white; border-color: var(--primary); }
+
+/* --- Role Badges --- */
+.role-badge { font-size: 10px; padding: 2px 6px; border-radius: 4px; text-transform: uppercase; font-weight: bold; letter-spacing: 0.5px;}
+.role-admin { background: #DBEAFE; color: #1E40AF; }
+.role-super { background: #FCE7F3; color: #9D174D; }
+
+/* --- Navigation --- */
+.bottom-nav {
+    position: fixed; bottom: 0; width: 100%; max-width: 480px; background: white; border-top: 1px solid #eee;
+    display: flex; justify-content: space-around; padding: 10px 0; z-index: 20;
+}
+.nav-item { display: flex; flex-direction: column; align-items: center; font-size: 11px; color: var(--text-sub); cursor: pointer; }
+.nav-item i { font-size: 20px; margin-bottom: 4px; }
+.nav-item.active { color: var(--primary); }
