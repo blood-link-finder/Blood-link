@@ -1,6 +1,5 @@
 const CACHE_NAME = "Blood-link-cache-v1";
 const urlsToCache = [
-  "/Blood-link/",
   "/Blood-link/index.html",
   "/Blood-link/manifest.json"
 ];
