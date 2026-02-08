@@ -10,11 +10,11 @@
     <link rel="manifest" href="/Blood-link/manifest.json">
 <meta name="theme-color" content="#0d6efd">
     <script>
-        if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("/Blood-link/service-worker.js")
-    .then(() => console.log("Service Worker Registered"))
-    .catch(err => console.error("SW failed", err));
-}
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("/Blood-link/service-worker.js")
+      .then(() => console.log("Service Worker Registered"))
+      .catch(err => console.error("SW failed:", err));
+  }
     </script>
 </head>
 <body>
